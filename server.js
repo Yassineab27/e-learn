@@ -1,14 +1,14 @@
 const express = require("express");
+const schoolRouter = require("./src/routes/schoolRoutes");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("GET / request ");
-});
+// Parsing incoming data
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.post("/", (req, res) => {
-  res.send("POST / request");
-});
+// Mounting Routes
+app.use("/api/v1/schools", schoolRouter);
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server listenning to the port ${PORT}`));
+app.listen(port, () => console.log(`Server listenning to the port ${port}`));
