@@ -1,7 +1,11 @@
 const express = require("express");
 const schoolRouter = require("./src/routes/schoolRoutes");
+const connectDB = require("./src/db");
 
 const app = express();
+
+// connect DB
+connectDB();
 
 // Parsing incoming data
 app.use(express.json());
